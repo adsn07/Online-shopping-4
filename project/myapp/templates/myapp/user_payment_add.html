@@ -1,0 +1,67 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Check Out {% endblock %}
+{% block body %}
+<center><br><br><br><br><br><br>
+    <h1>Check Out </h1>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-6">
+                 <h2>Item List</h2>
+                   <table class="table table-striped table-bordered auto-index">
+        <thead>
+             <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Date/Time</th>
+
+        </tr>
+             </thead>
+        {% for p in cart_list %}
+        <tbody>
+             <tr class="info ">
+            <td>&#x2022;</td>
+            <td>
+                {% for pm in product_list%}
+                {% if pm.id == p.product_id %}
+                {{pm.product_name}}
+                {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ p.qty }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.dt }} / {{ p.tm }}</td>
+
+        </tr>
+             </tbody>
+        {% endfor %}
+        </table>
+
+             </div>
+         <div class="col-md-6">
+             <h2>Payment Details</h2>
+    <form role="form" name="frm" action="{% url 'user_payment_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="amt">Amount :</label>
+            <input class="form-control" type="text"  id="amt" name="amt" value={{amt}} required="required">
+        </div>
+        <div class="form-group">
+            <label for="card_no">card_no :</label>
+            <input class="form-control" type="text"  id="card_no" name="card_no" value='' required="required">
+        </div>
+        <div class="form-group">
+            <label for="cvv">cvv :</label>
+            <input class="form-control" type="text"  id="cvv" name="cvv" value='' required="required">
+        </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Pay</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+         </div>
+     </div>
+    <h3>{{msg}}</h3>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

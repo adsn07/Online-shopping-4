@@ -1,0 +1,26 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block background %}background="{% static './myapp/images/online.jpg' %}"{% endblock %}
+{% block body %}
+<center>
+
+  <!--  <img src="{% static './myapp/images/online.jpg' %}" width="600" height="400">-->
+         <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h3>Welcome Admin</h3>
+            <h1>Better Shopping Solution For You...</h1>
+<!--          <h2>We are team of talented designers making websites with Bootstrap</h2>-->
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{%static 'myapp/assets/img/hero-img.png'%}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+</center>
+{% endblock %}

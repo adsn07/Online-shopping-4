@@ -1,0 +1,23 @@
+{% extends 'myapp/seller_base.html' %}
+{% load static %}
+{% block title %}Sub Category Update{% endblock %}
+{% block body %}
+<center><br><br><br><br><br>
+    <h1>Sub Category Update</h1>
+    <div class="container">
+     <form role="form" name="frm" action="{% url 'seller_sub_category_edit'%}" method="post">
+        {% csrf_token %}
+        <input class="form-control" type="hidden" name="category_id" id="category_id" value="{{category_id}}" required>
+
+         <div class="form-group">
+            <label for="sub_category_name">Sub Category Name :</label>
+            <input class="form-control" name="sub_category_name" id="sub_category_name" type="text"  value="{{sub_category_name}}" required><br><br>
+         </div>
+         <button type="submit" class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+         <input type="hidden" name="s_id" value="{{s_id}}">
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

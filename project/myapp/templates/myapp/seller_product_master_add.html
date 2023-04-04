@@ -1,0 +1,54 @@
+{% extends 'myapp/seller_base.html' %}
+{% load static %}
+{% block title %}Add Product{% endblock %}
+{% block body %}
+<center><br><br><br><br><br>
+    <h2><font color="#366092">Add Product</font></h2>
+<div class="container">
+    <form name="frm" role="form" action="{% url 'seller_product_master_add' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-group">
+            <label for="product_name">Name</label>
+            <input class="form-control" type="text"  name="product_name" placeholder="app name" required="required" id="product_name">
+        </div>
+           <div class="form-group">
+               <label for="sub_category_id">Category</label>
+                    <select class="form-control" id="sub_category_id"  name="sub_category_id">
+		            {% for  sc in subcategory_list%}
+		                <option value="{{sc.id}}">{{sc.sub_category_name}}</option>
+		            {% endfor %}
+		            </select>
+           </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input class="form-control" type="text"  name="description" placeholder="description "
+                       required="required" id="description">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text"  class="form-control" id="price" name="price"
+                       placeholder="100.0" required="required">
+            </div>
+        <div class="form-group">
+                <label for="stock">stock</label>
+                <input type="text"  class="form-control" id="stock" name="stock"
+                       placeholder="100.0" required="required">
+            </div>
+        <div class="form-group">
+                <label for="keywords">keywords</label>
+                <input type="text"  class="form-control" id="keywords" name="keywords"
+                       placeholder="keywords" required="required">
+            </div>
+        <div class="form-group">
+            <label for="document">Picture</label>
+            <input class="form-control" type="file" name="document" id="document">
+        </div>
+        <br><br>
+           <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+        <br><br>
+    </form>
+</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %} Category{% endblock %}
+{% block body %}
+<center><br><br><br><br><br>
+    <h2>Category</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'admin_category_add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="category_name">Category Name</label>
+	        <input class="form-control" type="text"  id="category_name" name="category_name" placeholder="category name" required="required">
+		</div>
+	    <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

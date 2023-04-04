@@ -1,0 +1,65 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Bill Details{% endblock %}
+{% block body %}
+<center><br><br><br><br><br><br>
+    <h2><font color="#366092">Bill</font></h2>
+<div class="container">
+    <form name="frm" action="" method="post">
+            {% csrf_token %}
+    <h5>User : {{ud.fname}} {{ud.lname}}</h5>
+        <h5>Date/Time : {{bm.dt}}/{{bm.tm}}</h5>
+         <table class="table table-striped table-bordered auto-index">
+        <thead>
+             <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Price (*)</th>
+            <th>Qty (=)</th>
+            <th>Amount</th>
+        </tr>
+             </thead>
+        {% for p in details_list %}
+        <tbody>
+             <tr class="info ">
+            <td></td>
+
+                {% for pm in product_list%}
+                {% if pm.id == p.product_id %}
+                <td>{{pm.product_name}}
+                <img src="../static/myapp/media/{{ pm.pic }}" width="50" height="50">
+                 </td>
+                 <td>{{pm.price}}</td>
+                {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ p.qty }}</td>
+            <td>{{ p.amt }}</td>
+        </tr>
+             </tbody>
+        {% endfor %}
+        </table>
+        <h5>Total Amount : <b> {{bm.total_amt}}</b> </h5>
+        {{msg}}
+        <br><br><br><br>
+        <button onclick="window.print()">PRINT</button>
+
+    </form>
+</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<style>
+  form
+  {
+    counter-reset: Serial;
+  }
+  table
+  {
+  }
+  .auto-index td:first-child:before
+  {
+    counter-increment: Serial;
+    content:counter(Serial);
+  }
+</style>
+
+{% endblock %}

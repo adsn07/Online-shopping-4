@@ -1,0 +1,57 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}My Reviews{% endblock %}
+{% block body %}
+<center><br><br><br><br><br><br>
+    <h2><font color="#366092">Review List</font></h2>
+<div class="container">
+    <form name="frm" action="" method="post">
+            {% csrf_token %}
+         <table class="table table-striped table-bordered auto-index">
+        <thead>
+             <tr>
+            <th>Sl.No</th>
+            <th>Review</th>
+            <th>Rating</th>
+            <th>Date/Time</th>
+            <th>Action</th>
+        </tr>
+             </thead>
+        {% for p in review_list %}
+        <tbody>
+             <tr class="info ">
+            <td></td>
+            <td>{{ p.review }}</td>
+            <td>{{ p.rating }}</td>
+            <td>{{ p.dt }} / {{ p.tm }}</td>
+            <td>
+                <a class="btn btn-danger"
+                   href="../user_product_review_delete?id={{p.id}}&product_master_id={{product_master_id}}">Delete</a>
+            </td>
+        </tr>
+             </tbody>
+        {% endfor %}
+        </table>
+        <input type="hidden"  name="product_master_id" value="{{product_master_id}}" >
+        {{msg}}
+        <br/>
+        <a class="btn btn-primary" href="../user_product_review_add?product_master_id={{product_master_id}}">Add Review</a></h1>
+    </form>
+</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<style>
+  form
+  {
+    counter-reset: Serial;
+  }
+  table
+  {
+  }
+  .auto-index td:first-child:before
+  {
+    counter-increment: Serial;
+    content:counter(Serial);
+  }
+</style>
+
+{% endblock %}

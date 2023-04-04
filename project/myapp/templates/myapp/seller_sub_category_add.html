@@ -1,0 +1,23 @@
+{% extends 'myapp/seller_base.html' %}
+{% load static %}
+{% block title %} Category{% endblock %}
+{% block body %}
+<center><br><br><br><br><br>
+    <h2>Category</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'seller_sub_category_add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="sub_category_name">Category Name</label>
+	        <input class="form-control" type="text"  id="sub_category_name" name="sub_category_name" placeholder="sub category name" required="required">
+	        <input class="form-control" type="hidden"  id="category_id" name="category_id" value="{{category_id}}" required="required">
+
+        </div>
+	    <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

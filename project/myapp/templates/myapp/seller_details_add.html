@@ -1,0 +1,60 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}New Seller{% endblock %}
+{% block body %}
+<center><br><br><br><br><br>
+    <h2>New Seller</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'seller_details_add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="name">Name</label>
+	        <input class="form-control" type="text"  id="name" name="name" placeholder="Enter Name" required="required">
+		</div>
+	    <div class="form-group">
+			<label for="about">About</label>
+	        <input type="text"  class="form-control" id="about" name="about" placeholder="About....." required="required">
+		</div>
+
+	    <div class="form-group">
+			<label for="addr">Address</label>
+	        <input class="form-control" type="text"  id="addr" name="addr" placeholder="Street" required="required">
+            <input type="text"  class="form-control" id="pin" name="pin" placeholder="pin" required="required">
+		</div>
+	    <div class="form-group">
+			<label for="contact">Contact</label>
+	        <input type="text"  class="form-control" id="contact" name="contact" placeholder="Enter contact" required="required">
+		</div>
+		<div class="form-group">
+			<label for="c_email">College Email</label>
+	        <input type="email" class="form-control" id="c_email" name="c_email" placeholder="Enter email id" required="required"></td>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+	        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email id" required="required"></td>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Password</label>
+	        <input type="password" class="form-control" id="passwd" name="passwd" placeholder="Enter Password" required="required"></td>
+		</div><br>
+
+	    <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<style>
+	input[type=text]{width:50%}
+	input[type=password]{width:50%}
+	input[type=email]{width:50%}
+
+	<script language="Javascript">
+
+
+
+
+</style>
+{% endblock %}
